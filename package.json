@@ -1,0 +1,48 @@
+{
+  "name": "omnichannel-api",
+  "description": "Api to link customer on all application",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "dev": "ts-node-dev -r tsconfig-paths/register --respawn --transpileOnly --ignore-watch node_modules --no-notify ./src/index.ts",
+    "test": "jest --colors",
+    "test:unit": "npm test -- --watch -c jest-unit-config.ts",
+    "test:staged": "npm test",
+    "build": "babel src --extensions \".js,.ts\" --out-dir dist --copy-files --no-copy-ignored",
+    "lint-staged": "lint-staged",
+    "prepare": "husky install"
+  },
+  "pre-commit": "lint-staged",
+  "lint-staged": {
+    "*.ts": [
+      "prettier --write --ignore-unknown",
+      "eslint --fix --ignore-path .gitignore",
+      "git add"
+    ]
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.15.7",
+    "@babel/core": "^7.15.8",
+    "@babel/node": "^7.15.8",
+    "@babel/preset-env": "^7.15.8",
+    "@babel/preset-typescript": "^7.15.0",
+    "@types/babel__core": "^7.1.16",
+    "@types/jest": "^27.0.2",
+    "@typescript-eslint/eslint-plugin": "^5.2.0",
+    "@typescript-eslint/parser": "^5.2.0",
+    "babel-plugin-module-resolver": "^4.1.0",
+    "eslint": "^8.1.0",
+    "husky": "^8.0.2",
+    "jest": "^27.3.1",
+    "lint-staged": "^13.0.3",
+    "prettier": "2.8.0",
+    "standard": "^17.0.0",
+    "ts-jest": "^27.0.7",
+    "tsconfig-paths": "^3.11.0",
+    "typescript": "^4.4.4"
+  },
+  "dependencies": {
+    "ts-node-dev": "^1.1.8"
+  }
+}
