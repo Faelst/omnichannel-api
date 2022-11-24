@@ -3,11 +3,12 @@ import { pathsToModuleNameMapper } from "ts-jest/utils";
 
 export default {
   clearMocks: true,
+  collectCoverage: true,
   coverageDirectory: "coverage",
   coverageProvider: "v8",
-  collectCoverageFrom: ["**/src/**/*.ts"],
+  collectCoverageFrom: ["**/src/**/*.js"],
+  preset: "ts-jest",
   moduleNameMapper: pathsToModuleNameMapper(compilerOptions.paths, {
     prefix: "<rootDir>",
   }),
-  preset: "ts-jest",
 };
