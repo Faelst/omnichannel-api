@@ -20,6 +20,7 @@ module.exports = {
           "@modules": "./src/modules",
           "@config": "./src/config",
           "@interfaces": "./src/interfaces",
+          "@main": "./src/main",
         },
       },
     ],

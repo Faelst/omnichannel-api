@@ -6,7 +6,6 @@ export default {
   collectCoverage: true,
   coverageDirectory: "coverage",
   coverageProvider: "v8",
-  collectCoverageFrom: ["**/src/**/*.js"],
   preset: "ts-jest",
   moduleNameMapper: pathsToModuleNameMapper(compilerOptions.paths, {
     prefix: "<rootDir>",
