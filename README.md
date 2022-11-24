@@ -1,1 +1,1 @@
-# setup-ts-projects
+# omnichannel-api
