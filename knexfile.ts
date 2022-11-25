@@ -2,7 +2,6 @@ import type { Knex } from "knex";
 
 const {
   DATABASE_HOST = "127.0.0.1",
-  DATABASE_PORT = "5432",
   DATABASE_USERNAME = "postgres",
   DATABASE_PASSWORD = "postgres",
   DATABASE_NAME = "postgres",

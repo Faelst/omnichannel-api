@@ -3,11 +3,11 @@
     "target": "ES2017",
     "lib": ["ES6"],
     "module": "commonjs",
-    "rootDir": "./src",
+    "rootDir": "./",
     "typeRoots": ["./node_modules/@types", "./src/@types"],
     "resolveJsonModule": true,
     "allowJs": true,
-    "outDir": "./dist",
+    "outDir": "dist",
     "removeComments": true,
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
@@ -20,7 +20,8 @@
       "@modules/*": ["./src/modules/*"],
       "@config/*": ["./src/config/*"],
       "@interfaces/*": ["./src/interfaces/*"],
-      "@main/*": ["./src/main/*"]
+      "@main/*": ["./src/main/*"],
+      "@tests/*": ["./tests/*"]
     }
   },
   "include": ["src/**/*"],

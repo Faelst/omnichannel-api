@@ -21,6 +21,7 @@ module.exports = {
           "@config": "./src/config",
           "@interfaces": "./src/interfaces",
           "@main": "./src/main",
+          "@tests": "./src/tests",
         },
       },
     ],
