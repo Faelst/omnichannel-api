@@ -22,6 +22,8 @@ module.exports = {
           "@interfaces": "./src/interfaces",
           "@main": "./src/main",
           "@tests": "./src/tests",
+          "@utils": "./src/utils",
+          "@presentations": "./src/presentations",
         },
       },
     ],
