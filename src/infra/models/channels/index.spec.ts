@@ -1,4 +1,5 @@
 import "@tests/setup";
+
 import { cleanAllTables } from "@tests/clearAllTables";
 import { Channel } from "./index";
 

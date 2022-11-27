@@ -23,7 +23,8 @@
       "@main/*": ["./src/main/*"],
       "@tests/*": ["./tests/*"],
       "@utils/*": ["./src/utils/*"],
-      "@presentations/*": ["./src/presentations/*"]
+      "@presentations/*": ["./src/presentations/*"],
+      "@infra/*": ["./src/infra/*"]
     }
   },
   "include": ["src/**/*"],
