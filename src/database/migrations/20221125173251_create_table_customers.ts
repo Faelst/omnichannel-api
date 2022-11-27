@@ -8,14 +8,14 @@ export async function up(knex: Knex): Promise<void> {
     table.string("document").notNullable();
     table.string("phone").notNullable();
 
-    table.timestamp("zip_code").defaultTo(knex.fn.now());
-    table.timestamp("address").defaultTo(knex.fn.now());
-    table.timestamp("number").defaultTo(knex.fn.now());
-    table.timestamp("complement").defaultTo(knex.fn.now());
-    table.timestamp("neighborhood").defaultTo(knex.fn.now());
-    table.timestamp("city").defaultTo(knex.fn.now());
-    table.timestamp("state").defaultTo(knex.fn.now());
-    table.timestamp("country").defaultTo(knex.fn.now());
+    table.string("zip_code").notNullable();
+    table.string("address").notNullable();
+    table.integer("number").notNullable();
+    table.string("complement").nullable().defaultTo(null);
+    table.string("neighborhood").notNullable();
+    table.string("city").notNullable();
+    table.string("state").notNullable();
+    table.string("country").notNullable();
 
     table.timestamp("created_at").defaultTo(knex.fn.now());
     table.timestamp("updated_at").nullable().defaultTo(null);
