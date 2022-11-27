@@ -21,10 +21,6 @@ export default class Model {
     return this.with().where(conditions);
   }
 
-  execute() {
-    return this.query;
-  }
-
   findOne(conditions: any) {
     return this.with().where(conditions).first();
   }

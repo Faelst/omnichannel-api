@@ -1,6 +1,6 @@
 import Model from "../model";
 
-interface ICustomer {
+export interface ICustomer {
   readonly id: string;
   name: string;
   readonly email: string;

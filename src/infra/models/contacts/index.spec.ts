@@ -46,4 +46,21 @@ describe("Contacts model", () => {
     expect(contact[0].customer_id).toBe(customer[0].id);
     expect(contact[0].entry_channel_id).toBe(channel[0].id);
   });
+
+  it("should return full data of a contact", async () => {
+    const { sut, channel, customer } = await makeSut();
+
+    const contact = await sut.create({
+      protocol: "any_protocol",
+      customer_id: customer[0].id,
+      entry_channel_id: channel[0].id,
+      is_finished: false,
+    });
+
+    const contactData = await sut.getFullById(contact[0].id);
+
+    expect(contactData).toBeTruthy();
+    expect(contactData.customer_name).toBe(customer[0].name);
+    expect(contactData.channel_name).toBe(channel[0].name);
+  });
 });
