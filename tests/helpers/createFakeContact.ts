@@ -1,7 +1,7 @@
 import { faker } from "@faker-js/faker";
 
-import { Channel } from "@infra/models/channels";
-import { Customer } from "@infra/models/customers";
+import { Channel } from "@domain/models/channels";
+import { Customer } from "@domain/models/customers";
 
 import { createFakeCustomer } from "./createFakeCustomer";
 

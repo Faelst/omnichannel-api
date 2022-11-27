@@ -3,7 +3,7 @@ import { InvalidParamError } from "@utils/errors/invalidParams";
 import { ServerError } from "@presentations/errors/index";
 
 export class ViaCepIntegration {
-  async validade(zipCode: string) {
+  async getAddress(zipCode: string) {
     const isValidZipCode = /^[0-9]{5}-?[0-9]{3}$/.test(zipCode);
 
     if (!isValidZipCode) {

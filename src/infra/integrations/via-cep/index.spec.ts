@@ -10,7 +10,7 @@ const makeSut = () => {
   return { sut };
 };
 
-describe("address validator", () => {
+describe("ViaCep Integration", () => {
   const validAddress = {
     cep: "valid_cep",
     logradouro: "valid_logradouro",
@@ -27,7 +27,7 @@ describe("address validator", () => {
   it("should thorw if cep is not provided", async () => {
     const { sut } = makeSut();
 
-    const promise = sut.validade("invalid_cep");
+    const promise = sut.getAddress("invalid_cep");
     expect(promise).rejects.toThrow(new InvalidParamError("zipCode"));
   });
 
@@ -40,7 +40,7 @@ describe("address validator", () => {
 
     const { sut } = makeSut();
 
-    const promise = sut.validade(validZipCode);
+    const promise = sut.getAddress(validZipCode);
     expect(promise).rejects.toThrow(
       new ServerError("Integration ViaCEP failed")
     );
@@ -55,7 +55,7 @@ describe("address validator", () => {
 
     const { sut } = makeSut();
 
-    const address = await sut.validade(validZipCode);
+    const address = await sut.getAddress(validZipCode);
     expect(address).toEqual(validAddress);
   });
 });

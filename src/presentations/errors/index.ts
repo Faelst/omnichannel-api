@@ -1,3 +1,2 @@
-import { ServerError } from "./server-error";
-
-export { ServerError };
+export * from "./server-error";
+export * from "./unauthorized-error";

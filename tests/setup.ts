@@ -26,7 +26,7 @@ export const migrate = async (config: any, tenant: string) => {
 };
 
 const initializeIntegrationTest = async () => {
-  await migrate(config, "public");
+  await migrate(config, "TEST");
 };
 
 beforeAll(() => initializeIntegrationTest());

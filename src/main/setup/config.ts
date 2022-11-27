@@ -1,3 +1,5 @@
+import setupRoutes from "@main/setup/routes";
+
 import express from "express";
 
 const setupApp = (app: express.Application): void => {
@@ -9,6 +11,8 @@ const setupApp = (app: express.Application): void => {
     next();
   });
   app.disable("x-powered-by");
+
+  setupRoutes(app);
 };
 
 export default setupApp;

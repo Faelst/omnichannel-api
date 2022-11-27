@@ -17,7 +17,7 @@ module.exports = {
         alias: {
           "@controllers": "./src/controllers",
           "@lib": "./src/lib",
-          "@modules": "./src/modules",
+          "@domain": "./src/domain",
           "@config": "./src/config",
           "@interfaces": "./src/interfaces",
           "@main": "./src/main",
@@ -25,6 +25,7 @@ module.exports = {
           "@utils": "./src/utils",
           "@presentations": "./src/presentations",
           "@infra": "./src/infra",
+          "@presentation": "./src/presentation",
         },
       },
     ],

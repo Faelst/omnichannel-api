@@ -1,7 +1,6 @@
 import Model from "../model";
-import { ICustomer } from "../customers";
 
-interface IContact {
+export interface IContact {
   readonly id: string;
   readonly protocol: string;
   readonly customer_id: string;
@@ -47,5 +46,23 @@ export class Contact extends Model implements IContact {
       .innerJoin("channels", "contacts.entry_channel_id", "channels.id");
 
     return contact;
+  }
+
+  async getFull(): Promise<IContact[]> {
+    const contacts = this.find({})
+      .select(
+        "contacts.id",
+        "contacts.protocol as protocol",
+        "contacts.is_finished as is_finished",
+        "contacts.created_at as created_at",
+        "customers.id as customer_id",
+        "customers.name as customer_name",
+        "channels.id as channel_id",
+        "channels.name as channel_name"
+      )
+      .innerJoin("customers", "contacts.customer_id", "customers.id")
+      .innerJoin("channels", "contacts.entry_channel_id", "channels.id");
+
+    return contacts;
   }
 }

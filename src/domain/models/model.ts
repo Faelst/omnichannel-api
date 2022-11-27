@@ -1,4 +1,5 @@
-import { Database } from "../config/database";
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import { Database } from "../../infra/config/database";
 import { v4 as uuid } from "uuid";
 import { Knex } from "knex";
 

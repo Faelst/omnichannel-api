@@ -1,42 +1,11 @@
 import "@tests/setup";
 import { faker } from "@faker-js/faker";
+import { Message } from "./index";
 
 import { createFakeContact } from "@tests/helpers/createFakeContact";
 
 import { Contact } from "../contacts";
 import { Channel } from "../channels";
-
-import Model from "../model";
-
-interface IMessage {
-  readonly id: string;
-  content: string;
-  readonly contact_id: string;
-  readonly from_channel_id: string;
-  customer_id?: string;
-  customer_name?: string;
-  user_id?: string;
-  user_name?: string;
-  readonly created_at: Date;
-  updated_at?: Date;
-  deleted_at?: Date;
-}
-
-class Message extends Model implements IMessage {
-  id!: string;
-  content!: string;
-  contact_id!: string;
-  from_channel_id!: string;
-  customer_id?: string;
-  user_id?: string;
-  created_at!: Date;
-  updated_at?: Date;
-  deleted_at?: Date;
-
-  constructor() {
-    super("messages");
-  }
-}
 
 const makeSut = async () => {
   const contact = new Contact();
@@ -68,16 +37,9 @@ describe("Message Model", () => {
         customer_id: contacts[0].customer_id,
         user_id: null,
       })),
-      ...(await sut.create({
-        content: faker.lorem.sentence(),
-        contact_id: contacts[0].id,
-        from_channel_id: channels[1].id,
-        customer_id: null,
-        user_id: null,
-      })),
     ];
 
-    expect(message).toHaveLength(2);
+    expect(message).toHaveLength(1);
     expect(message).toBeTruthy();
 
     message.forEach((msg) => {

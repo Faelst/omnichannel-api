@@ -3,7 +3,7 @@
     "target": "ES2017",
     "lib": ["ES6"],
     "module": "commonjs",
-    "rootDir": "./src",
+    "rootDir": "./",
     "typeRoots": ["./node_modules/@types", "./src/@types"],
     "resolveJsonModule": true,
     "allowJs": true,
@@ -17,16 +17,17 @@
     "paths": {
       "@controllers/*": ["./src/controllers/*"],
       "@lib/*": ["./src/lib/*"],
-      "@modules/*": ["./src/modules/*"],
+      "@domain/*": ["./src/domain/*"],
       "@config/*": ["./src/config/*"],
       "@interfaces/*": ["./src/interfaces/*"],
       "@main/*": ["./src/main/*"],
       "@tests/*": ["./tests/*"],
       "@utils/*": ["./src/utils/*"],
       "@presentations/*": ["./src/presentations/*"],
-      "@infra/*": ["./src/infra/*"]
+      "@infra/*": ["./src/infra/*"],
+      "@presentation/*": ["./src/presentation/*"]
     }
   },
-  "include": ["src/**/*"],
-  "exclude": ["node_modules", "test", "**/*.spec.ts", "**/*.test.ts"]
+  "include": ["src/**/*", "src/presentations/protocols/controller.ts"],
+  "exclude": ["node_modules"]
 }

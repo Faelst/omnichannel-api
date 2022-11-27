@@ -5,10 +5,10 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "dev": "ts-node-dev -r tsconfig-paths/register --respawn --transpileOnly --ignore-watch node_modules --no-notify ./src/index.ts",
+    "dev": "ts-node-dev -r tsconfig-paths/register --respawn --ignore-watch node_modules --no-notify ./src/main/server.ts",
     "test": "jest --forceExit",
-    "test:unit": "npm test -- --watch -c jest-unit-config.ts --detectOpenHandles --forceExit",
-    "test:staged": "jest --colors --coverage --forceExit",
+    "test:unit": "npm test -- --watch -c jest-unit-config.ts --detectOpenHandles --forceExit --runInBand",
+    "test:staged": "jest --colors --coverage --forceExit --runInBand",
     "build": "babel src --extensions \".js,.ts\" --out-dir dist --copy-files --no-copy-ignored",
     "lint-staged": "lint-staged",
     "prepare": "husky install"
