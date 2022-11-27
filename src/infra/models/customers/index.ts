@@ -1,6 +1,6 @@
 import Model from "../model";
 
-interface ICostumer {
+interface ICustomer {
   readonly id: string;
   name: string;
   readonly email: string;
@@ -19,7 +19,7 @@ interface ICostumer {
   deleted_at?: Date;
 }
 
-export class Costumer extends Model implements ICostumer {
+export class Customer extends Model implements ICustomer {
   id!: string;
   name!: string;
   email!: string;

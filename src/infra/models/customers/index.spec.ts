@@ -1,10 +1,10 @@
 import "@tests/setup";
 
 import { faker } from "@faker-js/faker";
-import { Costumer } from "./index";
+import { Customer } from "./index";
 
 const makeSut = () => {
-  const sut = new Costumer();
+  const sut = new Customer();
   return { sut };
 };
 
@@ -26,7 +26,7 @@ const createFakeCustomer = () => {
 };
 
 describe("Costumer model", () => {
-  it("should create return a costumer", async () => {
+  it("should create return a Customer", async () => {
     const { sut } = makeSut();
 
     const costumer = await sut.create(createFakeCustomer());
@@ -34,7 +34,7 @@ describe("Costumer model", () => {
     expect(costumer).toBeTruthy();
   });
 
-  it("should return a costumer when get by id", async () => {
+  it("should return a Customer when get by id", async () => {
     const { sut } = makeSut();
 
     const fakerCustomer = await sut.create(createFakeCustomer());
