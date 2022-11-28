@@ -1,5 +1,5 @@
 import { ServerError } from "@presentations/errors";
-import { FetchAllContactsController } from "./fetch-all-contacts";
+import { FetchAllContactsController } from "./fetch-all";
 
 class ContactsUseCaseSpy {
   contacts: any[] = [];
