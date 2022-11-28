@@ -1,7 +1,22 @@
 import { Customer } from "@domain/models/customers";
 
+export interface ICreate {
+  name: string;
+  email: string;
+  document: string;
+  phone: string;
+  zip_code: string;
+  address: string;
+  number: number;
+  complement: string;
+  neighborhood: string;
+  city: string;
+  state: string;
+  country: string;
+}
+
 export interface ICustomerRepository {
-  create(customer: Customer): Promise<Customer[]>;
+  create(customer: ICreate): Promise<Customer[]>;
   fetchAll(): Promise<Customer[]>;
 }
 
@@ -12,7 +27,7 @@ export class CustomersRepository implements ICustomerRepository {
     this.costumerModel = customersModel;
   }
 
-  async create(customer: Customer): Promise<Customer[]> {
+  async create(customer: ICreate): Promise<Customer[]> {
     return await this.costumerModel.create(customer);
   }
 

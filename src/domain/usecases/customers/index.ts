@@ -1,5 +1,5 @@
 import { Customer } from "@domain/models/customers";
-import { CustomersRepository } from "@infra/repositories/costumers";
+import { CustomersRepository, ICreate } from "@infra/repositories/costumers";
 
 export class CustomersUseCase {
   constructor(private readonly customerRepository: CustomersRepository) {}
@@ -8,7 +8,7 @@ export class CustomersUseCase {
     return await this.customerRepository.fetchAll();
   }
 
-  async create(customer: Customer): Promise<Customer[]> {
+  async create(customer: ICreate): Promise<Customer[]> {
     return await this.customerRepository.create(customer);
   }
 
