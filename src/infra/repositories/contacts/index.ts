@@ -1,6 +1,6 @@
 import { Contact, IContact } from "@domain/models/contacts";
 
-export interface CreateParams {
+export interface ICreate {
   protocol?: string;
   customerId: string;
   entryChannelId: string;
@@ -18,7 +18,7 @@ export class ContactsRepository {
     return this.ContactsModel.getFull();
   }
 
-  async create(contact: CreateParams): Promise<IContact[]> {
+  async create(contact: ICreate): Promise<IContact[]> {
     return this.ContactsModel.create({
       protocol: contact?.protocol,
       customer_id: contact.customerId,

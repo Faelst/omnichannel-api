@@ -1,4 +1,4 @@
-import { ContactsRepository, CreateParams } from "@infra/repositories/contacts";
+import { ContactsRepository, ICreate } from "@infra/repositories/contacts";
 
 export class ContactsUseCase {
   constructor(private readonly contactsRepository: ContactsRepository) {}
@@ -11,7 +11,7 @@ export class ContactsUseCase {
     return this.contactsRepository.fetchAll();
   }
 
-  async create(contact: CreateParams) {
+  async create(contact: ICreate) {
     const protocol = this.generateProtocol();
 
     return this.contactsRepository.create({ ...contact, protocol });
