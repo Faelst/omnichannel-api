@@ -13,6 +13,11 @@ class UserModelSpy {
   async findById() {
     return this.user;
   }
+
+  async create({ name }: { name: string }) {
+    this.user.name = name;
+    return [this.user];
+  }
 }
 
 const makeSut = () => {
@@ -40,5 +45,14 @@ describe("Users Repository", () => {
     const user = await sut.fetchById("any_id");
 
     expect(user).toEqual(userModelSpy.user);
+  });
+
+  it("should return a user when create is called", async () => {
+    const { sut, userModelSpy } = makeSut();
+
+    const [user] = await sut.create({ name: "valid_name" });
+
+    expect(user).toEqual(userModelSpy.user);
+    expect(user.name).toBe(userModelSpy.user.name);
   });
 });
