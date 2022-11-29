@@ -26,10 +26,10 @@ export class CreateCustomerController {
         return badRequest(error);
       }
 
-      const { name, email, document, phone, zipCode, number, country } =
+      const { name, email, document, phone, zip_code, number, country } =
         request;
 
-      const address = await this.createCustomerUseCase.getAddress(zipCode);
+      const address = await this.createCustomerUseCase.getAddress(zip_code);
 
       const customer = await this.createCustomerUseCase.create({
         name,
@@ -60,7 +60,7 @@ export namespace CreateCustomerController {
     email: string;
     document: string;
     phone: string;
-    zipCode: string;
+    zip_code: string;
     number: number;
     country: string;
   };
