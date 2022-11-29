@@ -15,8 +15,8 @@ export interface IGetAddress {
 }
 
 export class ViaCepIntegration {
-  async getAddress(zipCode: string): Promise<IGetAddress> {
-    const response = await fetch(`https://viacep.com.br/ws/${zipCode}/json/`);
+  async getAddress(zip_code: string): Promise<IGetAddress> {
+    const response = await fetch(`https://viacep.com.br/ws/${zip_code}/json/`);
 
     const data = await response.json();
 

@@ -1,3 +1,3 @@
 export interface ZipCodeValidator {
-  isValid: (zipCode: string) => boolean;
+  isValid: (zip_code: string) => boolean;
 }

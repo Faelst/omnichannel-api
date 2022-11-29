@@ -14,15 +14,15 @@ class ValidationSpy implements Validation {
 
 class CreateCustomerUseCaseSpy {
   customer: any;
-  zipCode: any;
+  zip_code: any;
   address: any;
 
   async create(customer: any) {
     this.customer = customer;
   }
 
-  async getAddress(zipCode: string) {
-    this.zipCode = zipCode;
+  async getAddress(zip_code: string) {
+    this.zip_code = zip_code;
     this.address = {
       cep: "12345678",
       logradouro: "Rua dos Bobos",

@@ -3,7 +3,7 @@ import { CustomersUseCase } from ".";
 
 class CustomersRepositorySpy {
   fetchByIdParams = "";
-  zipCode = "";
+  zip_code = "";
   customer = {
     name: "any_name",
     email: "any_email",
@@ -32,8 +32,8 @@ class CustomersRepositorySpy {
     return this.customer;
   }
 
-  getAddress(zipCode: string) {
-    this.zipCode = zipCode;
+  getAddress(zip_code: string) {
+    this.zip_code = zip_code;
     return this.customer;
   }
 }
@@ -84,6 +84,6 @@ describe("Customers UseCase", () => {
     const { sut, customersRepositorySpy } = makeSut();
     const customer = await sut.getAddress("any_zip_code");
     expect(customer).toEqual(customersRepositorySpy.customer);
-    expect(customersRepositorySpy.zipCode).toBe("any_zip_code");
+    expect(customersRepositorySpy.zip_code).toBe("any_zip_code");
   });
 });

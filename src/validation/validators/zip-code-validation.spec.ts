@@ -3,10 +3,10 @@ import { ZipCodeValidation } from "./zip-code-validation";
 
 class ZipCodeValidatorSpy {
   _isValid = true;
-  zipCode = "";
+  zip_code = "";
 
-  isValid(zipCode: string): boolean {
-    this.zipCode = zipCode;
+  isValid(zip_code: string): boolean {
+    this.zip_code = zip_code;
     return this._isValid;
   }
 }

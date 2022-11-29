@@ -43,7 +43,7 @@ export class CustomersRepository implements ICustomerRepository {
     return await this.costumerModel.findById(id);
   }
 
-  async getAddress(zipCode: string): Promise<IGetAddress> {
-    return await this.viaCepIntegration.getAddress(zipCode);
+  async getAddress(zip_code: string): Promise<IGetAddress> {
+    return await this.viaCepIntegration.getAddress(zip_code);
   }
 }

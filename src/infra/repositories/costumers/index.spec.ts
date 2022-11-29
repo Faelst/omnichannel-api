@@ -37,7 +37,7 @@ class CustomerModelSpy {
 }
 
 class ViaCepIntegrationSpy {
-  zipCode = "";
+  zip_code = "";
 
   address = {
     zip_code: "any_zip_code",
@@ -49,8 +49,8 @@ class ViaCepIntegrationSpy {
     country: "any_country",
   };
 
-  async getAddress(zipCode: string) {
-    this.zipCode = zipCode;
+  async getAddress(zip_code: string) {
+    this.zip_code = zip_code;
     return this.address;
   }
 }

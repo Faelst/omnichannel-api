@@ -7,7 +7,7 @@ export const makeCreateCustomerValidator = () => {
   const validators: Validation[] = [];
 
   validators.push(
-    new ZipCodeValidation("zipCode", new ZipCodeValidationAdapter())
+    new ZipCodeValidation("zip_code", new ZipCodeValidationAdapter())
   );
 
   return new ValidationComposite(validators);

@@ -5,4 +5,5 @@ import { Router } from "express";
 
 export default (router: Router): void => {
   router.post("/messages/send", adaptRoute(makeSendMessageController()));
+  router.get("/messages", adaptRoute(makeSendMessageController()));
 };

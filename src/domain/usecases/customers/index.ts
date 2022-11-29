@@ -17,7 +17,7 @@ export class CustomersUseCase {
     return await this.customerRepository.fetchById(id);
   }
 
-  async getAddress(zipCode: string): Promise<IGetAddress> {
-    return await this.customerRepository.getAddress(zipCode);
+  async getAddress(zip_code: string): Promise<IGetAddress> {
+    return await this.customerRepository.getAddress(zip_code);
   }
 }
