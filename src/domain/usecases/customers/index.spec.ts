@@ -3,6 +3,7 @@ import { CustomersUseCase } from ".";
 
 class CustomersRepositorySpy {
   fetchByIdParams = "";
+  zipCode = "";
   customer = {
     name: "any_name",
     email: "any_email",
@@ -28,6 +29,11 @@ class CustomersRepositorySpy {
 
   fetchById(id: string) {
     this.fetchByIdParams = id;
+    return this.customer;
+  }
+
+  getAddress(zipCode: string) {
+    this.zipCode = zipCode;
     return this.customer;
   }
 }
@@ -72,5 +78,12 @@ describe("Customers UseCase", () => {
     const customer = await sut.fetchById("any_id");
     expect(customer).toEqual(customersRepositorySpy.customer);
     expect(customersRepositorySpy.fetchByIdParams).toBe("any_id");
+  });
+
+  it("should be able to fetch a customer by zip code", async () => {
+    const { sut, customersRepositorySpy } = makeSut();
+    const customer = await sut.getAddress("any_zip_code");
+    expect(customer).toEqual(customersRepositorySpy.customer);
+    expect(customersRepositorySpy.zipCode).toBe("any_zip_code");
   });
 });
