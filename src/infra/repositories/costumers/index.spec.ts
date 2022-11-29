@@ -36,10 +36,33 @@ class CustomerModelSpy {
   }
 }
 
+class ViaCepIntegrationSpy {
+  zipCode = "";
+
+  address = {
+    zip_code: "any_zip_code",
+    address: "any_address",
+    complement: "any_complement",
+    neighborhood: "any_neighborhood",
+    city: "any_city",
+    state: "any_state",
+    country: "any_country",
+  };
+
+  async getAddress(zipCode: string) {
+    this.zipCode = zipCode;
+    return this.address;
+  }
+}
+
 const makeSut = () => {
   const customerModelSpy = new CustomerModelSpy();
+  const viaCepIntegrationSpy = new ViaCepIntegrationSpy();
 
-  const sut = new CustomersRepository(customerModelSpy as any);
+  const sut = new CustomersRepository(
+    customerModelSpy as any,
+    viaCepIntegrationSpy as any
+  );
 
   return {
     sut,

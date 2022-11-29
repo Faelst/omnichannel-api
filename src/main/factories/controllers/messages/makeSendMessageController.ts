@@ -8,6 +8,7 @@ import { ContactsUseCase } from "@domain/usecases/contacts";
 import { CustomersUseCase } from "@domain/usecases/customers";
 import { MessagesUseCase } from "@domain/usecases/messages";
 import { UsersUseCase } from "@domain/usecases/users";
+import { ViaCepIntegration } from "@infra/integrations/via-cep";
 import { ChannelsRepository } from "@infra/repositories/channels";
 import { ContactsRepository } from "@infra/repositories/contacts";
 import { CustomersRepository } from "@infra/repositories/costumers";
@@ -19,7 +20,7 @@ export const makeSendMessageController = () => {
   const messages = new MessagesUseCase(new MessagesRepository(new Message()));
 
   const customers = new CustomersUseCase(
-    new CustomersRepository(new Customer())
+    new CustomersRepository(new Customer(), new ViaCepIntegration())
   );
 
   const users = new UsersUseCase(new UsersRepository(new Users()));

@@ -1,4 +1,5 @@
 import { Customer } from "@domain/models/customers";
+import { IGetAddress, ViaCepIntegration } from "@infra/integrations/via-cep";
 
 export interface ICreate {
   name: string;
@@ -23,7 +24,10 @@ export interface ICustomerRepository {
 export class CustomersRepository implements ICustomerRepository {
   costumerModel: Customer;
 
-  constructor(private readonly customersModel: Customer) {
+  constructor(
+    private readonly customersModel: Customer,
+    private readonly viaCepIntegration: ViaCepIntegration
+  ) {
     this.costumerModel = customersModel;
   }
 
@@ -37,5 +41,9 @@ export class CustomersRepository implements ICustomerRepository {
 
   async fetchById(id: string): Promise<Customer> {
     return await this.costumerModel.findById(id);
+  }
+
+  async getAddress(zipCode: string): Promise<IGetAddress> {
+    return await this.viaCepIntegration.getAddress(zipCode);
   }
 }

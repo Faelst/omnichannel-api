@@ -26,7 +26,27 @@ export class CreateCustomerController {
         return badRequest(error);
       }
 
-      return ok(request);
+      const { name, email, document, phone, zipCode, number, country } =
+        request;
+
+      const address = await this.createCustomerUseCase.getAddress(zipCode);
+
+      const customer = await this.createCustomerUseCase.create({
+        name,
+        email,
+        document,
+        phone,
+        country,
+        number,
+        zip_code: address.cep,
+        address: address.logradouro,
+        complement: address.complemento,
+        neighborhood: address.bairro,
+        city: address.localidade,
+        state: address.uf,
+      });
+
+      return ok(customer);
     } catch (error: any) {
       return serverError(error);
     }
@@ -38,6 +58,10 @@ export namespace CreateCustomerController {
   export type Request = {
     name: string;
     email: string;
+    document: string;
+    phone: string;
     zipCode: string;
+    number: number;
+    country: string;
   };
 }
