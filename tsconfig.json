@@ -25,7 +25,8 @@
       "@utils/*": ["./src/utils/*"],
       "@presentations/*": ["./src/presentations/*"],
       "@infra/*": ["./src/infra/*"],
-      "@presentation/*": ["./src/presentation/*"]
+      "@presentation/*": ["./src/presentation/*"],
+      "@validation/*": ["./src/validation/*"]
     }
   },
   "include": ["src/**/*", "src/presentations/protocols/controller.ts"],

@@ -26,6 +26,7 @@ module.exports = {
           "@presentations": "./src/presentations",
           "@infra": "./src/infra",
           "@presentation": "./src/presentation",
+          "@validation": "./src/validation",
         },
       },
     ],
