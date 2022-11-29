@@ -10,7 +10,7 @@ export class ChannelsUseCase {
     return await this.channelsRepository.fetchAll();
   }
 
-  async create(channel: Channel): Promise<Channel[]> {
+  async create(channel: { name: string }): Promise<Channel[]> {
     return await this.channelsRepository.create({
       name: channel.name,
     });
