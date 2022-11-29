@@ -2,6 +2,7 @@ import { ICreate } from "@infra/repositories/costumers";
 import { CustomersUseCase } from ".";
 
 class CustomersRepositorySpy {
+  fetchByIdParams = "";
   customer = {
     name: "any_name",
     email: "any_email",
@@ -19,6 +20,15 @@ class CustomersRepositorySpy {
 
   create(customer: ICreate) {
     return customer;
+  }
+
+  fetchAll() {
+    return [this.customer];
+  }
+
+  fetchById(id: string) {
+    this.fetchByIdParams = id;
+    return this.customer;
   }
 }
 
@@ -49,5 +59,18 @@ describe("Customers UseCase", () => {
       country: "any_country",
     });
     expect(customer).toEqual(customersRepositorySpy.customer);
+  });
+
+  it("should be able to fetch all customers", async () => {
+    const { sut, customersRepositorySpy } = makeSut();
+    const customers = await sut.fetchAll();
+    expect(customers).toEqual([customersRepositorySpy.customer]);
+  });
+
+  it("should be able to fetch a customer by id", async () => {
+    const { sut, customersRepositorySpy } = makeSut();
+    const customer = await sut.fetchById("any_id");
+    expect(customer).toEqual(customersRepositorySpy.customer);
+    expect(customersRepositorySpy.fetchByIdParams).toBe("any_id");
   });
 });
