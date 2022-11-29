@@ -1,4 +1,5 @@
 import knex from "knex";
+import { cleanAllTables } from "./clearAllTables";
 import { config } from "./config";
 
 const getKnex = (config: any, tenant: string) =>
@@ -29,4 +30,8 @@ const initializeIntegrationTest = async () => {
   await migrate(config, "TEST");
 };
 
-beforeAll(() => initializeIntegrationTest());
+beforeAll(async () => await initializeIntegrationTest());
+
+afterEach(async () => {
+  await cleanAllTables();
+});

@@ -3,7 +3,7 @@ import { CustomersRepository, ICreate } from ".";
 class CustomerModelSpy {
   findByIdParamId = "";
 
-  costumer = {
+  customer = {
     name: "any_name",
     email: "any_email",
     document: "any_document",
@@ -27,12 +27,12 @@ class CustomerModelSpy {
   }
 
   find() {
-    return [this.costumer];
+    return [this.customer];
   }
 
   findById(id: string) {
     this.findByIdParamId = id;
-    return this.costumer;
+    return this.customer;
   }
 }
 
@@ -47,29 +47,29 @@ const makeSut = () => {
   };
 };
 
-describe("Costumers Repository", () => {
-  it("should return all costumers when fetch all is called", async () => {
+describe("Customers Repository", () => {
+  it("should return all customers when fetch all is called", async () => {
     const { sut, customerModelSpy } = makeSut();
 
-    const costumers = await sut.fetchAll();
+    const customers = await sut.fetchAll();
 
-    expect(costumers).toEqual([customerModelSpy.costumer]);
+    expect(customers).toEqual([customerModelSpy.customer]);
   });
 
-  it("should return a costumer when fetch by id is called", async () => {
+  it("should return a customer when fetch by id is called", async () => {
     const { sut, customerModelSpy } = makeSut();
 
-    const costumer = await sut.fetchById("any_id");
+    const customer = await sut.fetchById("any_id");
 
-    expect(costumer).toEqual(customerModelSpy.costumer);
+    expect(customer).toEqual(customerModelSpy.customer);
     expect(customerModelSpy.findByIdParamId).toBe("any_id");
   });
 
-  it("should return a costumer when create is called", async () => {
+  it("should return a customer when create is called", async () => {
     const { sut, customerModelSpy } = makeSut();
 
-    const costumer = await sut.create(customerModelSpy.costumer as ICreate);
+    const customer = await sut.create(customerModelSpy.customer as ICreate);
 
-    expect(costumer).toEqual(customerModelSpy.costumer);
+    expect(customer).toEqual(customerModelSpy.customer);
   });
 });

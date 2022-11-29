@@ -8,12 +8,8 @@ import { Contact } from "../contacts";
 import { Channel } from "../channels";
 
 const makeSut = async () => {
-  const contact = new Contact();
+  const contactModel = new Contact();
   const channel = new Channel();
-
-  const contactData = await createFakeContact();
-
-  const [contacts] = [await contact.create(contactData)];
 
   const channels = [
     ...(await channel.create({ name: faker.name.firstName() })),
@@ -22,12 +18,16 @@ const makeSut = async () => {
 
   const sut = new Message();
 
-  return { sut, contacts, channels };
+  return { sut, contactModel, channels };
 };
 
 describe("Message Model", () => {
   it("should be able to create a new message", async () => {
-    const { sut, contacts, channels } = await makeSut();
+    const { sut, contactModel, channels } = await makeSut();
+
+    const contactData = await createFakeContact();
+
+    const contacts = await contactModel.create(contactData);
 
     const message = [
       ...(await sut.create({
