@@ -95,4 +95,20 @@ describe("Customers Repository", () => {
 
     expect(customer).toEqual(customerModelSpy.customer);
   });
+
+  it("should return a customer when get address is called", async () => {
+    const { sut } = makeSut();
+
+    const customer = await sut.getAddress("any_zip_code");
+
+    expect(customer).toEqual({
+      zip_code: "any_zip_code",
+      address: "any_address",
+      complement: "any_complement",
+      neighborhood: "any_neighborhood",
+      city: "any_city",
+      state: "any_state",
+      country: "any_country",
+    });
+  });
 });
