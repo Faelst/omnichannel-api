@@ -25,4 +25,20 @@ describe("Fetch Channels Controller", () => {
     await sut.handle();
     expect(channelsUseCaseSpy.fetchAllCalled).toBe(true);
   });
+
+  it("should return 200 on success", async () => {
+    const { sut } = makeSut();
+    const httpResponse = await sut.handle();
+    expect(httpResponse.statusCode).toBe(200);
+  });
+
+  it("should return 500 if use case throws", async () => {
+    const { sut, channelsUseCaseSpy } = makeSut();
+    jest.spyOn(channelsUseCaseSpy, "fetchAll").mockImplementationOnce(() => {
+      throw new Error();
+    });
+
+    const httpResponse = await sut.handle();
+    expect(httpResponse.statusCode).toBe(500);
+  });
 });
